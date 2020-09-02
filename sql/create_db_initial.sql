@@ -55,6 +55,12 @@ CREATE TABLE `games` (
   `result_type_id` int(11) DEFAULT NULL,
   `result_comments` varchar(256) DEFAULT NULL,
   `box_score_filename` varchar(256) DEFAULT NULL,
-  PRIMARY KEY (`game_id`)
+  `nba_com_game_id` varchar(16) DEFAULT NULL,
+  PRIMARY KEY (`game_id`),
+  KEY `fk_games_game_locations_idx` (`game_location_id`),
+  KEY `fk_games_game_types_idx` (`game_type_id`),
+  KEY `fk_games_result_types_idx` (`result_type_id`),
+  CONSTRAINT `fk_games_game_locations` FOREIGN KEY (`game_location_id`) REFERENCES `game_locations` (`game_location_id`),
+  CONSTRAINT `fk_games_game_types` FOREIGN KEY (`game_type_id`) REFERENCES `game_types` (`game_type_id`),
+  CONSTRAINT `fk_games_result_types` FOREIGN KEY (`result_type_id`) REFERENCES `result_types` (`result_type_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
