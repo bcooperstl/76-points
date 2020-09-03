@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Do not check in my real properties files
+resources/76points.properties
+
