@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import mysql.connector
+import pprint
 import database_properties
 
 conn = None
@@ -38,4 +39,9 @@ def close_connection():
 
 if __name__ == '__main__':
     open_connection()
+    mycursor = get_connection().cursor()
+    mycursor.execute("select 'working' from dual")
+    myresult=mycursor.fetchone()
+    pprint.pprint(myresult)
+    mycursor.close()
     close_connection()
