@@ -28,7 +28,7 @@ def load_to_dict():
     finally:
         cursor.close()
     
-def get_type(type):
+def get_game_type(type):
     if not game_types:
         load_to_dict()
     return game_types.get(type)
@@ -36,6 +36,6 @@ def get_type(type):
 if __name__ == '__main__':
     load_to_dict()
     pprint.pprint(game_types)
-    print("Postseason: "+str(game_types[POSTSEASON]))
-    print("Regular Season: "+str(game_types[REGULAR_SEASON]))
+    print("Postseason: "+str(get_game_type(POSTSEASON)))
+    print("Regular Season: "+str(get_game_type(REGULAR_SEASON)))
     
