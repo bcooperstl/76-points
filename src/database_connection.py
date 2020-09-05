@@ -26,7 +26,7 @@ def open_connection():
 
 def get_connection():
     global conn
-    if conn == None:
+    if conn == None or (not conn.is_connected()):
         open_connection()
     return conn
 
